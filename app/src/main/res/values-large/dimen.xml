@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Activity_detail -->
+    <dimen name="card_view_margin">35dp</dimen>
+    <dimen name="margin_start_t1">35dp</dimen>
+    <dimen name="grand_text">20sp</dimen>
+    <dimen name="tail_image">35dp</dimen>
+    <dimen name="separation_20">25dp</dimen>
+    <dimen name="date_width">140dp</dimen>
+    <dimen name="dateandtime_height">110dp</dimen>
+    <dimen name="time_width">165dp</dimen>
+    <dimen name="text15">17sp</dimen>
+    <dimen name="text14">16sp</dimen>
+    <dimen name="separation_gauche">17dp</dimen>
+    <dimen name="button_top">55dp</dimen>
+
+
+    <dimen name="separation_5">8dp</dimen>
+    <dimen name="padding_parent">25dp</dimen>
+    <dimen name="separation_haut">13dp</dimen>
+
+    <!-- item -->
+    <dimen name="image_size">55dp</dimen>
+
+    <dimen name="padding_plus">7dp</dimen>
+    <dimen name="t1_height">25dp</dimen>
+    <dimen name="t2_height">20dp</dimen>
+    <dimen name="start">28dp</dimen>
+    <dimen name="top">4dp</dimen>
+    <dimen name="end">13dp</dimen>
+    <dimen name="text12">14sp</dimen>
+    <dimen name="text16">18sp</dimen>
+
+</resources>

@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item">
+
+    <item
+        android:id="@+id/menu_filtre"
+        android:icon="@drawable/baseline_drag_handle_black_18dp"
+        android:title="Filtrer"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_trieDate"
+        android:icon="@drawable/baseline_drag_handle_black_18dp"
+        android:title="Trier par date"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_trieRoom"
+        android:icon="@drawable/baseline_drag_handle_black_18dp"
+        android:title="Trier par salle"
+        app:showAsAction="never"/>
+
+</menu>

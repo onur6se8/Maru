@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_parent">
+
+    <EditText
+        android:id="@+id/Salle"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:hint = "Salle"/>
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        style="@android:style/Widget.DatePicker"
+        android:layout_width="@dimen/date_width"
+        android:layout_height="@dimen/dateandtime_height"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="@dimen/separation_haut"
+        android:endYear="2020"
+        android:startYear="2020" />
+
+</LinearLayout>

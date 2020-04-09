@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical"
+    tools:context=".DetailActivity">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@android:color/darker_gray"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/card_view_margin"
+            android:layout_marginTop="@dimen/card_view_margin"
+            android:layout_marginEnd="@dimen/card_view_margin"
+            app:cardElevation="5dp"
+            card_view:cardCornerRadius="10dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_start_t1"
+                    android:textColor="@android:color/black"
+                    android:text="Choisir l'importance de la réunion"
+                    android:textSize="@dimen/grand_text"/>
+
+                <ImageView
+                    android:id="@+id/couleur"
+                    android:layout_width="@dimen/tail_image"
+                    android:layout_height="@dimen/tail_image"
+                    android:layout_below="@+id/textView"
+                    android:layout_marginTop="@dimen/separation_haut"
+                    app:srcCompat="@android:color/holo_red_dark" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tail_image"
+                    android:layout_below="@+id/textView"
+                    android:layout_marginStart="@dimen/separation_gauche"
+                    android:layout_marginTop="@dimen/separation_haut"
+                    android:layout_toEndOf="@+id/couleur"
+                    android:layout_toRightOf="@+id/couleur"
+                    android:textSize="14sp"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/card_view_margin"
+            android:layout_marginTop="@dimen/card_view_margin"
+            android:layout_marginEnd="@dimen/card_view_margin"
+            app:cardElevation="5dp"
+            card_view:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <DatePicker
+                        android:id="@+id/datePicker"
+                        style="@android:style/Widget.DatePicker"
+                        android:layout_width="@dimen/date_width"
+                        android:layout_height="@dimen/dateandtime_height"
+                        android:layout_below="@+id/textView3"
+                        android:layout_marginTop="@dimen/separation_haut"
+                        android:endYear="2020"
+                        android:startYear="2020" />
+
+                    <TimePicker
+                        android:id="@+id/timePicker"
+                        android:layout_width="@dimen/time_width"
+                        android:layout_height="@dimen/dateandtime_height"
+                        android:layout_alignTop="@+id/datePicker"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginRight="0dp"
+                        android:timePickerMode="spinner" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/timePicker"
+                        android:layout_marginStart="@dimen/separation_20"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text15"
+                        android:text=" Horaire " />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/separation_haut"
+                        android:textColor="@android:color/black"
+                        android:text=" Date "
+                        android:textSize="@dimen/text15" />
+
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/lieuReunion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines = "1"
+                    android:hint="Le lieu de la réunion"
+                    android:layout_marginTop="@dimen/separation_5"
+                    android:textSize="@dimen/text14" />
+
+                <EditText
+                    android:id="@+id/sujetRéunion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/separation_5"
+                    android:maxLines = "1"
+                    android:hint="Le Sujet de la réunion"
+                    android:textSize="@dimen/text14" />
+
+                <EditText
+                    android:id="@+id/listeParticipants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/separation_5"
+                    android:maxLines = "1"
+                    android:hint="Adresses mail des participants"
+                    android:textSize="@dimen/text14" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/buttonOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/button_top"
+            android:padding="@dimen/padding_parent"
+            android:text="Save"
+            android:textColor="@color/colorAccent"
+            app:backgroundTint="@color/colorPrimary"
+            app:cornerRadius="20dp"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
