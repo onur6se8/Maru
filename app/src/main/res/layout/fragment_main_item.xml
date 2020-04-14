@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
+    android:background="@color/blanc"
     android:orientation="horizontal"
     android:padding="@dimen/separation_haut">
 
@@ -13,7 +13,7 @@
         android:id="@+id/profil_image"
         android:layout_width="@dimen/image_size"
         android:layout_height="@dimen/image_size"
-        card_view:srcCompat="@color/colorAccent"
+        card_view:srcCompat="@color/blanc"
         android:layout_marginLeft="@dimen/padding_plus"/>
 
     <TextView
@@ -48,7 +48,7 @@
         android:layout_width="@dimen/image_size"
         android:layout_height="@dimen/image_size"
         android:layout_alignParentEnd="true"
-        android:background="@color/colorAccent"
+        android:background="@color/blanc"
         android:layout_marginEnd="@dimen/padding_plus"
         android:layout_gravity="center"
         android:src="@drawable/ic_delete_white_24dp"/>

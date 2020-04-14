@@ -7,18 +7,15 @@ import java.util.List;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import di.DI;
+import fragments.MainFragment;
 import model.Meeting;
 import service.DummyMeetingApiService;
 import service.ListMeeting;
 import service.MeetingApiService;
+import views.MeetingAdapter;
 
 import static org.junit.Assert.*;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 public class ExampleUnitTest {
 
     private MeetingApiService service;
@@ -59,13 +56,30 @@ public class ExampleUnitTest {
                 10,
                 0,
                 4,
-                2
+                2,
+                "Réunion C"
         );
         service.addMeetting(meeting);
 
         List<Meeting> meetingAdd = service.getMeeting();
         assertEquals(4, meetingAdd.size());
-
     }
 
+    @Test
+    public void filterDateMeeting() {
+
+        List<Meeting> meetings = service.filterMeeting(24,2,"Réunion C",0);   //  0
+
+        assertEquals(1,meetings.size());
+        assertEquals( service.getMeeting().get(2), meetings.get(0));
+    }
+
+    @Test
+    public void filterRoomMeeting() {
+
+        List<Meeting> meetings = service.filterMeeting(24,2,"Réunion C",1);  // 1
+
+        assertEquals(1,meetings.size());
+        assertEquals( service.getMeeting().get(2), meetings.get(0));
+    }
 }

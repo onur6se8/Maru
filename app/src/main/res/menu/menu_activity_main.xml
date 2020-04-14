@@ -17,5 +17,9 @@
         android:icon="@drawable/baseline_drag_handle_black_18dp"
         android:title="Trier par salle"
         app:showAsAction="never"/>
-
+    <item
+        android:id="@+id/menu_retour"
+        android:icon="@drawable/baseline_drag_handle_black_18dp"
+        android:title="Sans filtre"
+        app:showAsAction="never"/>
 </menu>

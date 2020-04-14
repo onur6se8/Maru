@@ -7,7 +7,7 @@ import androidx.annotation.RequiresApi;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Meeting implements Comparable<Meeting>{
+public class Meeting implements Comparable<Meeting>{               // model de la liste
 
     private Integer id;
     private String info;
@@ -22,7 +22,7 @@ public class Meeting implements Comparable<Meeting>{
     public Meeting (Integer id, String info, String member, int couleurAvatar, int h, int min, int day, int month, String room){
 
         this.id = id;
-        this.info = info;
+        this.info = info;                             // les info de la list
         this.member = member;
         this.couleurAvatar = couleurAvatar;
         this.h = h;
@@ -35,11 +35,11 @@ public class Meeting implements Comparable<Meeting>{
 
     public Integer getId() {
         return id;
-    }
+    }                  // get pour retourner la valeur
 
     public void setId(Integer id) {
         this.id = id;
-    }
+    }                                              // et les set pour modifier la valeur lors de leurs appel
 
     public String getInfo() {
         return info;
@@ -91,7 +91,7 @@ public class Meeting implements Comparable<Meeting>{
 
         @Override
         public int compare(Meeting e1, Meeting e2) {
-            return e1.getInfo().compareTo(e2.getInfo());
+            return e1.getRoom().compareTo(e2.getRoom());
         }
     };
 

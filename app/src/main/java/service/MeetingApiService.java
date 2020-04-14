@@ -8,7 +8,7 @@ import model.Meeting;
 
 public interface MeetingApiService {
 
-    List<Meeting> getMeeting();
+    List<Meeting> getMeeting();                        // Ceci est une structure, l'architecture logiciel
 
     void  deleteMeeting(Meeting meeting);
 

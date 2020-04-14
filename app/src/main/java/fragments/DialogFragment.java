@@ -4,15 +4,18 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -22,63 +25,68 @@ import com.example.maru.R;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.Collections;
+import java.util.List;
+
 import butterknife.BindView;
+import events.DeleteMeetingEvent;
 import events.FilterMeetingEvent;
+import model.Meeting;
 
 
-public class DialogFragment extends androidx.fragment.app.DialogFragment {
+public class DialogFragment extends AppCompatDialogFragment {               // la boite de dialogue
 
-    public DialogFragment() {
-    }
+    private DatePicker picker;
+    private EditText salle;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dialog, container, false);
-    }
+    private Boolean pickerChanged = false;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        // Get the layout inflater
-        LayoutInflater inflater = requireActivity().getLayoutInflater();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_Light_Dialog_Alert);
+        LayoutInflater inflater = getActivity().getLayoutInflater();     // on appel les interface graphiques
+        View view = inflater.inflate(R.layout.fragment_dialog, null);
 
-        View mView = inflater.inflate(R.layout.fragment_dialog, null);
+        builder.setView(view)
+                .setTitle("Filtrer")
+                .setPositiveButton("Ajouter", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
 
-        DatePicker picker = (DatePicker) mView.findViewById(R.id.datePicker);
-        EditText salle = (EditText) mView.findViewById(R.id.sujetRéunion);
+                        if(!pickerChanged && salle.getText().toString().equals("") ){
+                            Toast.makeText(getContext(), "Filtrer par date et/ou par lieu.", Toast.LENGTH_LONG).show();
+                        }
+                        else if(salle.getText().toString().equals("")){
 
-        builder.setView(mView)
-                .setTitle("Filter")
-                .setPositiveButton("Apply", (dialog, id) -> {
+                            EventBus.getDefault().post(new FilterMeetingEvent( picker.getDayOfMonth(), picker.getMonth() + 1, salle.getText().toString(), 0));
+                        }
+                        else if(!pickerChanged){
 
-                    if(picker == null && salle.getText().toString().equals("") ){
-                        Toast.makeText(mView.getContext(), "Veuiilez remplir tout les cases.", Toast.LENGTH_LONG).show();
-                    }
-                    else if(salle.getText().toString().equals("")){
+                            EventBus.getDefault().post(new FilterMeetingEvent( picker.getDayOfMonth(), picker.getMonth() + 1, salle.getText().toString(), 1));
+                        }
+                        else {
 
-                        EventBus.getDefault().post(new FilterMeetingEvent( picker.getDayOfMonth(), picker.getMonth() + 1, salle.getText().toString(), 0));
-                        DialogFragment.this.getDialog().cancel();
-                    }
-                    else if(picker == null){
-
-                        EventBus.getDefault().post(new FilterMeetingEvent( picker.getDayOfMonth(), picker.getMonth() + 1, salle.getText().toString(), 1));
-                        DialogFragment.this.getDialog().cancel();
-                    }
-                    else {
-
-                        EventBus.getDefault().post(new FilterMeetingEvent( picker.getDayOfMonth(), picker.getMonth() + 1, salle.getText().toString(), 2));
-                        DialogFragment.this.getDialog().cancel();
+                            EventBus.getDefault().post(new FilterMeetingEvent( picker.getDayOfMonth(), picker.getMonth() + 1, salle.getText().toString(), 2));
+                        }
                     }
                 })
-                .setNegativeButton("Cancel", (dialog, id) -> DialogFragment.this.getDialog().cancel());
+                .setNegativeButton("Fermer", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                       DialogFragment.this.getDialog().cancel();
+                    }
+                });
+        picker = view.findViewById(R.id.datePickerDialog);
+        salle = view.findViewById(R.id.dialogSalle);
+
+        picker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                pickerChanged = true;
+            }
+        });
+
         return builder.create();
     }
-
 }

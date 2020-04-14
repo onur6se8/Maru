@@ -42,7 +42,7 @@ public class DetailActivity extends AppCompatActivity {
 
     @BindView(R.id.couleur)
     public ImageView mCouleur;
-    @BindView(R.id.spinner)
+    @BindView(R.id.spinner)                // les interfaces graphiques
     public Spinner spin;
     @BindView(R.id.lieuReunion)
     public EditText mLieuReunion;
@@ -102,7 +102,6 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-
         mTimePicker.setIs24HourView(true);
         mTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
@@ -111,10 +110,10 @@ public class DetailActivity extends AppCompatActivity {
                     mMinute = "0" +  String.valueOf(minute);
                 }
                 else {
-                    mMinute = String.valueOf(minute);
+                    mMinute = String.valueOf(minute);           // en string pour afficher
                 }
                 mHour = String.valueOf(hourOfDay);
-                min = Integer.valueOf(minute);
+                min = Integer.valueOf(minute);            // en int pour calculer
                 h = Integer.valueOf(hourOfDay);
             }
         });
@@ -124,16 +123,15 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(mLieuReunion.getText().toString().equals("") || mSujetReunion.getText().toString().equals("") || mHour == null ){
-                    Toast.makeText(getApplicationContext(), "Veuiilez remplir tout les cases.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Veuiilez remplir toute les cases.", Toast.LENGTH_LONG).show();
                 }
                 else {
                     mInfo = mLieuReunion.getText().toString() + " - " + mHour + "h" + mMinute + " - " + mSujetReunion.getText().toString();
-                    listParticipant = mListParticipant.getText().toString();
 
                     Meeting meeting = new Meeting(
                             mApiService.getMeeting().size(),
                             mInfo,
-                            listParticipant,
+                            mListParticipant.getText().toString(),
                             couleurMeeting,
                             h,
                             min,
@@ -141,6 +139,7 @@ public class DetailActivity extends AppCompatActivity {
                             mDatePicker.getMonth() + 1,
                             mLieuReunion.getText().toString()
                     );
+
                     mApiService.addMeetting(meeting);
                     finish();
                 }
@@ -149,13 +148,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void configureToolbar(){
-        //Get the toolbar (Serialise)
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //Set the toolbar
         setSupportActionBar(toolbar);
-        // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
-        // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
     }
 }

@@ -83,7 +83,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.ViewHold
         @BindView(R.id.profil_image)
         public ImageView mMeetingAvatar;
         @BindView(R.id.text_info)
-        public TextView mMeetingInfo;
+        public TextView mMeetingInfo;                  // les interfaces graphique
         @BindView(R.id.text_invite)
         public TextView mMeetingInvite;
         @BindView(R.id.imageButton_supr)
